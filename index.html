@@ -12,7 +12,7 @@
   </style>
 </head>
 <body>
-  <h1>국회의원 정보</h1>
+  <h1>국회의원 정보_v5</h1>
   <div class="card-container" id="card-container"></div>
 
   <script>
@@ -25,11 +25,11 @@
           card.className = 'card';
           card.innerHTML = `
             <div class="name">${member.name}</div>
-            <div class="party">정당: ${member.party}</div>
-            <div class="region">지역: ${member.gsx$지역.$t}</div>
-            <div class="bill">최근 발의 법안: ${member.bill}</div>
-            <div class="activity">주요 활동: ${member.activity}</div>
-            <div class="attendance">출석률: ${member.attendance}</div>
+            <div class="party">${member.party}</div>
+            <div class="region">${member.region}</div>
+            <div class="info">최근 발의 법안: ${member.bill}</div>
+            <div class="info">주요 활동: ${member.activity}</div>
+            <div class="info">출석률: ${member.attendance}</div>
           `;
           container.appendChild(card);
         });
