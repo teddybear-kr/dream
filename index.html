@@ -16,23 +16,27 @@
   <div class="card-container" id="card-container"></div>
 
   <script>
-    fetch('members.json')
+    // Google Sheets에서 JSON 데이터를 가져오는 URL
+    fetch('https://spreadsheets.google.com/feeds/list/2PACX-1vQAtMJ7IysIUoUUoV6g12QVkb0y592grfIR_zGEccRxDcHTsfl1aG-4uZ9P6id2dVNpywPDQiHLsKBg/od6/public/values?alt=json')
       .then(response => response.json())
       .then(data => {
         const container = document.getElementById('card-container');
-        data.forEach(member => {
+        data.feed.entry.forEach(member => {
           const card = document.createElement('div');
           card.className = 'card';
           card.innerHTML = `
-            <div class="name">${member.name}</div>
-            <div class="party">${member.party}</div>
-            <div class="info">최근 발의 법안: ${member.bill}</div>
-            <div class="info">주요 활동: ${member.activity}</div>
-            <div class="info">출석률: ${member.attendance}</div>
+            <div class="name">${member.gsx$이름.$t}</div>
+            <div class="party">정당: ${member.gsx$정당.$t}</div>
+            <div class="region">지역: ${member.gsx$지역.$t}</div>
+            <div class="info">최근 발의 법안: ${member.gsx$최근발의법안.$t}</div>
+            <div class="info">주요 활동: ${member.gsx$주요활동.$t}</div>
+            <div class="info">출석률: ${member.gsx$출석률.$t}</div>
           `;
+
           container.appendChild(card);
         });
-      });
+      })
+      .catch(error => console.error('데이터 불러오기 실패:', error));
   </script>
 </body>
 </html>
