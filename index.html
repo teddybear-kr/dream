@@ -12,27 +12,24 @@
   </style>
 </head>
 <body>
-  <h1>국회의원 정보_v1</h1>
+  <h1>국회의원 정보_v3</h1>
   <div class="card-container" id="card-container"></div>
 
   <script>
-    // Google Sheets API URL
-    const sheetUrl = 'https://sheets.googleapis.com/v4/spreadsheets/2PACX-1vQAtMJ7IysIUoUUoV6g12QVkb0y592grfIR_zGEccRxDcHTsfl1aG-4uZ9P6id2dVNpywPDQiHLsKBg/values/Sheet1!A1:F3?key=AIzaSyDoa-8PkQttUPSrg0es39-68zYNm5dfWQs';
-
-    fetch(sheetUrl)
+    fetch('https://raw.githubusercontent.com/your-username/your-repository/main/members.json')  // 여기에 GitHub의 JSON 파일 URL을 넣어야 해요
       .then(response => response.json())
       .then(data => {
         const container = document.getElementById('card-container');
-        data.values.slice(1).forEach(member => {  // 첫 번째 행은 컬럼명이므로 제외
+        data.forEach(member => {
           const card = document.createElement('div');
           card.className = 'card';
           card.innerHTML = `
-            <div class="name">${member[0]}</div>  <!-- 이름 -->
-            <div class="party">정당: ${member[1]}</div>  <!-- 정당 -->
-            <div class="region">지역: ${member[2]}</div>  <!-- 지역 -->
-            <div class="info">최근 발의 법안: ${member[3]}</div>  <!-- 최근 발의 법안 -->
-            <div class="info">주요 활동: ${member[4]}</div>  <!-- 주요 활동 -->
-            <div class="info">출석률: ${member[5]}</div>  <!-- 출석률 -->
+            <div class="name">${member.name}</div>
+            <div class="party">정당: ${member.party}</div>
+            <div class="region">지역: ${member.region}</div>
+            <div class="info">최근 발의 법안: ${member.bill}</div>
+            <div class="info">주요 활동: ${member.activity}</div>
+            <div class="info">출석률: ${member.attendance}</div>
           `;
           container.appendChild(card);
         });
