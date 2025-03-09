@@ -9,10 +9,26 @@
     .card { background: white; border-radius: 12px; padding: 20px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); width: 250px; }
     .name { font-size: 20px; font-weight: bold; }
     .party, .info { font-size: 14px; color: #555; margin-top: 4px; }
+    .basic-info { background: #e3f2fd; padding: 15px; border-radius: 10px; margin-bottom: 20px; }
   </style>
 </head>
 <body>
-  <h1>국회의원 정보_v5</h1>
+  <h1>국회의원 정보</h1>
+  
+  <!-- 기본 정보 섹션 -->
+  <div class="basic-info">
+    <h2>국회의원 기본 정보</h2>
+    <p>현재 대한민국 국회의원 수: <strong>300명</strong></p>
+    <p>국회의원 선출 주기: <strong>4년</strong></p>
+    <p>다른 나라와 비교:</p>
+    <ul>
+      <li>미국: 하원 435명, 상원 100명</li>
+      <li>영국: 하원 650명</li>
+      <li>일본: 중의원 465명, 참의원 245명</li>
+      <li>독일: 연방하원 709명</li>
+    </ul>
+  </div>
+
   <div class="card-container" id="card-container"></div>
 
   <script>
