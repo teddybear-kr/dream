@@ -8,15 +8,15 @@
     .card-container { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; }
     .card { background: white; border-radius: 12px; padding: 20px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); width: 250px; }
     .name { font-size: 20px; font-weight: bold; }
-    .party, .region, .info { font-size: 14px; color: #555; margin-top: 4px; }
+    .party, .info { font-size: 14px; color: #555; margin-top: 4px; }
   </style>
 </head>
 <body>
-  <h1>국회의원 정보_v3</h1>
+  <h1>국회의원 정보</h1>
   <div class="card-container" id="card-container"></div>
 
   <script>
-    fetch('https://raw.githubusercontent.com/your-username/your-repository/main/members.json')  // 여기에 GitHub의 JSON 파일 URL을 넣어야 해요
+    fetch('members.json')
       .then(response => response.json())
       .then(data => {
         const container = document.getElementById('card-container');
@@ -25,16 +25,14 @@
           card.className = 'card';
           card.innerHTML = `
             <div class="name">${member.name}</div>
-            <div class="party">정당: ${member.party}</div>
-            <div class="region">지역: ${member.region}</div>
+            <div class="party">${member.party}</div>
             <div class="info">최근 발의 법안: ${member.bill}</div>
             <div class="info">주요 활동: ${member.activity}</div>
             <div class="info">출석률: ${member.attendance}</div>
           `;
           container.appendChild(card);
         });
-      })
-      .catch(error => console.error('데이터 불러오기 실패:', error));
+      });
   </script>
 </body>
 </html>
