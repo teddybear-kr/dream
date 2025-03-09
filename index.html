@@ -12,12 +12,12 @@
   </style>
 </head>
 <body>
-  <h1>국회의원 정보</h1>
+  <h1>국회의원 정보_v1</h1>
   <div class="card-container" id="card-container"></div>
 
   <script>
     // Google Sheets API URL
-    const sheetUrl = 'https://sheets.googleapis.com/v4/spreadsheets/2PACX-1vQAtMJ7IysIUoUUoV6g12QVkb0y592grfIR_zGEccRxDcHTsfl1aG-4uZ9P6id2dVNpywPDQiHLsKBg/values/Sheet1!A1:Z10?key=AIzaSyDoa-8PkQttUPSrg0es39-68zYNm5dfWQs';
+    const sheetUrl = 'https://sheets.googleapis.com/v4/spreadsheets/2PACX-1vQAtMJ7IysIUoUUoV6g12QVkb0y592grfIR_zGEccRxDcHTsfl1aG-4uZ9P6id2dVNpywPDQiHLsKBg/values/Sheet1!A1:F3?key=AIzaSyDoa-8PkQttUPSrg0es39-68zYNm5dfWQs';
 
     fetch(sheetUrl)
       .then(response => response.json())
