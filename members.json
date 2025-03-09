@@ -1,18 +1,18 @@
 [
- {
-   "name": "홍길동",
-   "party": "무소속",
-   "region": "서울 강남",
-   "bill": "청년 주거 안정법",
-   "activity": "예산결산특별위원회 참여",
-   "attendance": "95%"
- },
- {
-   "name": "김민지",
-   "party": "정의당",
-   "region": "부산 해운대",
-   "bill": "기후위기 대응 기본법",
-   "activity": "국토교통위원회 의원",
-   "attendance": "89%"
- }
+  {
+    "name": "홍길동",
+    "party": "무소속",
+    "region": "서울 강남",
+    "bill": "청년 주거 안정법",
+    "activity": "예산결산특별위원회 참여",
+    "attendance": "95%"
+  },
+  {
+    "name": "김민지",
+    "party": "정의당",
+    "region": "부산 해운대",
+    "bill": "기후위기 대응 기본법",
+    "activity": "국토교통위원회 의원",
+    "attendance": "89%"
+  }
 ]
