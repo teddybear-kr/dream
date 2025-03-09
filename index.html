@@ -8,7 +8,7 @@
     .card-container { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; }
     .card { background: white; border-radius: 12px; padding: 20px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); width: 250px; }
     .name { font-size: 20px; font-weight: bold; }
-    .party, .info { font-size: 14px; color: #555; margin-top: 4px; }
+    .party, .region, .info { font-size: 14px; color: #555; margin-top: 4px; }
   </style>
 </head>
 <body>
@@ -16,23 +16,24 @@
   <div class="card-container" id="card-container"></div>
 
   <script>
-    // Google Sheets에서 JSON 데이터를 가져오는 URL
-    fetch('https://spreadsheets.google.com/feeds/list/2PACX-1vQAtMJ7IysIUoUUoV6g12QVkb0y592grfIR_zGEccRxDcHTsfl1aG-4uZ9P6id2dVNpywPDQiHLsKBg/od6/public/values?alt=json')
+    // Google Sheets API URL
+    const sheetUrl = 'https://sheets.googleapis.com/v4/spreadsheets/2PACX-1vQAtMJ7IysIUoUUoV6g12QVkb0y592grfIR_zGEccRxDcHTsfl1aG-4uZ9P6id2dVNpywPDQiHLsKBg/values/Sheet1!A1:Z10?key=AIzaSyDoa-8PkQttUPSrg0es39-68zYNm5dfWQs';
+
+    fetch(sheetUrl)
       .then(response => response.json())
       .then(data => {
         const container = document.getElementById('card-container');
-        data.feed.entry.forEach(member => {
+        data.values.slice(1).forEach(member => {  // 첫 번째 행은 컬럼명이므로 제외
           const card = document.createElement('div');
           card.className = 'card';
           card.innerHTML = `
-            <div class="name">${member.gsx$이름.$t}</div>
-            <div class="party">정당: ${member.gsx$정당.$t}</div>
-            <div class="region">지역: ${member.gsx$지역.$t}</div>
-            <div class="info">최근 발의 법안: ${member.gsx$최근발의법안.$t}</div>
-            <div class="info">주요 활동: ${member.gsx$주요활동.$t}</div>
-            <div class="info">출석률: ${member.gsx$출석률.$t}</div>
+            <div class="name">${member[0]}</div>  <!-- 이름 -->
+            <div class="party">정당: ${member[1]}</div>  <!-- 정당 -->
+            <div class="region">지역: ${member[2]}</div>  <!-- 지역 -->
+            <div class="info">최근 발의 법안: ${member[3]}</div>  <!-- 최근 발의 법안 -->
+            <div class="info">주요 활동: ${member[4]}</div>  <!-- 주요 활동 -->
+            <div class="info">출석률: ${member[5]}</div>  <!-- 출석률 -->
           `;
-
           container.appendChild(card);
         });
       })
